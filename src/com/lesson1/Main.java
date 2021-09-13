@@ -3,7 +3,6 @@ package com.lesson1;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
@@ -11,12 +10,7 @@ public class Main {
     public static void main(String[] args) throws Exception {
         Book[] books = generateBooks();
 
-        for (Book book : books) {
-            System.out.println(book.getAuthor());
-            System.out.println(book.getAmountOfPages());
-            System.out.println(book.getAmoutOfCopies());
-            System.out.println(book.getDateOfCreation());
-        }
+        getBooksWith150Pages(books);
     }
 
     static class Book {
@@ -53,7 +47,7 @@ public class Main {
             return this.dateOfCreation;
         }
 
-        public void setDateOfCreation(String dateOfCreation) throws Exception {
+        public void setDateOfCreation(String dateOfCreation) throws ParseException {
             try {
                 this.dateOfCreation = new SimpleDateFormat("dd/MM/yyyy").parse(dateOfCreation);
             } catch (ParseException pe) {
@@ -74,6 +68,8 @@ public class Main {
         for (int i = 0; i < N; i++) {
             Book simpleBook = new Book();
 
+            System.out.println("\n====== BOOK #" + (i + 1) + " ======");
+            // Author
             System.out.print("Enter the name of author: ");
             String author = scanner.next();
 
@@ -81,17 +77,35 @@ public class Main {
             author += " " + scanner.next();
             simpleBook.setAuthor(author);
 
-            System.out.print("Enter the amount of pages: ");
-            while (scanner.hasNextInt()) {
-                simpleBook.setAmountOfPages(scanner.nextInt());
-            }
+            // Number of pages
+            int amountOfPages;
+            do {
+                System.out.print("Enter the amount of pages: ");
 
-            System.out.print("Enter the amount of copies: ");
-            while (scanner.hasNextInt()) {
-                simpleBook.setAmoutOfCopies(scanner.nextInt());
-            }
+                while (!scanner.hasNextInt()) {
+                    System.err.print("Enter the amount of pages: ");
+                    scanner.next();
+                }
 
+                amountOfPages = scanner.nextInt();
+                simpleBook.setAmountOfPages(amountOfPages);
+            } while (amountOfPages <= 0);
 
+            // Number of copies
+            int amountOfCopies;
+            do {
+                System.out.print("Enter the amount of copies: ");
+
+                while (!scanner.hasNextInt()) {
+                    System.err.print("Enter the amount of copies: ");
+                    scanner.next();
+                }
+
+                amountOfCopies = scanner.nextInt();
+                simpleBook.setAmoutOfCopies(amountOfCopies);
+            } while (amountOfCopies <= 0);
+
+            // Date of creation
             while (true) {
                 System.out.print("Enter the date (dd/MM/yyyy format): ");
                 String date = scanner.next();
@@ -115,17 +129,17 @@ public class Main {
         return date.matches(RegExp);
     }
 
-    public static boolean isNumeric(String number) {
-        if (number == null) {
-            return false;
+    public static void getBooksWith150Pages(Book[] books) {
+        for (Book book : books) {
+            if (book.getAmountOfPages() >= 150) {
+                System.out.println("\n[Info about book]");
+                System.out.println("Pages: " + book.getAmountOfPages());
+                System.out.println("Author: " + book.getAuthor());
+                System.out.println("Copies: " + book.getAmoutOfCopies());
+                System.out.println("Date: " + book.getDateOfCreation());
+            } else {
+                System.err.println("There is no books with >= 150 pages!");
+            }
         }
-
-        try {
-            double d = Double.parseDouble(number);
-        } catch (NumberFormatException nfe) {
-            return false;
-        }
-
-        return true;
     }
 }
