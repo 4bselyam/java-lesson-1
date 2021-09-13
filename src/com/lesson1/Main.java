@@ -6,7 +6,15 @@ import java.util.Date;
 import java.util.Scanner;
 
 public class Main {
+    /*
+    Базовый уровень: создать класс с нижеуказанными полями и вывести данные о книгах, в которых количество страниц больше 150.
+        Автор
+        Количество страниц
+        Тираж
+        Год издания
+    */
 
+    
     public static void main(String[] args) throws Exception {
         Book[] books = generateBooks();
 
