@@ -62,6 +62,7 @@ public class Main {
 
         System.out.print("Pass the amount of books: ");
         N = scanner.nextInt();
+        scanner.nextLine();
 
         Book[] arrayOfBooks = new Book[N];
 
@@ -69,9 +70,10 @@ public class Main {
             Book simpleBook = new Book();
 
             System.out.println("\n====== BOOK #" + (i + 1) + " ======");
+
             // Author
             System.out.print("Enter the name of author: ");
-            String author = scanner.next();
+            String author = scanner.nextLine();
 
             System.out.print("Enter the surname of author: ");
             author += " " + scanner.next();
