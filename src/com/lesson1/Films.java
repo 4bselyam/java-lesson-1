@@ -8,6 +8,15 @@ import java.util.GregorianCalendar;
 import java.util.Scanner;
 
 public class Films {
+    /*
+    Средний уровень: создать класс с нижеуказанными полями и вывести данные о фильмах, начинающихся после 18:00 ипродолжительностью сеанса более 1 часа и 40 минут
+        Наименование
+        Дата и время сеанса
+        Продолжительность сеанса
+        Жанр
+        Бюджет 
+    */
+
     public static void main(String[] args) {
         Film[] films = generateFilms();
 
