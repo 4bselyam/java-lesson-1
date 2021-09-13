@@ -13,7 +13,6 @@ public class Main {
         Тираж
         Год издания
     */
-
     
     public static void main(String[] args) throws Exception {
         Book[] books = generateBooks();
