@@ -22,7 +22,7 @@ public class Books {
         StringBuilder answer = new StringBuilder();
         for (Book book : books) {
             if (book.getAmountOfPages() > 150) {
-                answer.append(String.format("\n\n[RESULT]\nAuthor: %s\nAmount of pages: %d\nAmount of copies: %d\nDate of creation: %s\n\n", book.getAuthor(), book.getAmountOfPages(), book.getAmoutOfCopies(), book.getDateOfCreation()));
+                answer.append(String.format("\n\n[RESULT]\nAuthor: %s\nAmount of pages: %d\nAmount of copies: %d\nDate of creation: %s\n", book.getAuthor(), book.getAmountOfPages(), book.getAmoutOfCopies(), book.getDateOfCreation()));
             }
         }
         return answer.toString();

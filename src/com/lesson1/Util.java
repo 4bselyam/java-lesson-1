@@ -10,9 +10,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 public class Util {
-    public static Books generateBooks() throws Exception {
-        Scanner scanner = new Scanner(System.in);
-
+    public static Books generateBooks(Scanner scanner) throws Exception {
         System.out.print("Pass the amount of books: ");
         final int N = scanner.nextInt();
         scanner.nextLine();
@@ -72,13 +70,10 @@ public class Util {
             books.addBook(simpleBook);
         }
 
-        scanner.close();
         return books;
     }
 
-    public static Films generateFilms() {
-        Scanner scanner = new Scanner(System.in);
-
+    public static Films generateFilms(Scanner scanner) {
         System.out.print("Pass the amount of films: ");
         final int N = scanner.nextInt();
         scanner.nextLine();
@@ -136,7 +131,6 @@ public class Util {
             films.addFilm(simpleFilm);
         }
 
-        scanner.close();
         return films;
     }
 

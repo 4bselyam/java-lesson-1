@@ -26,7 +26,7 @@ public class Films {
 
             if (film.getTimeDuration() > 1.4 && sessionDate.getHour() >= 18 && sessionDate.getMinute() > 0) {
                 String date = String.format("%d/%s/%d %d:%d", sessionDate.getDayOfMonth(), sessionDate.getMonthValue(), sessionDate.getYear(), sessionDate.getHour(), sessionDate.getMinute());
-                answer.append(String.format("\n\n[RESULT]\nName: %s\nSession Date: %s\nDuration: %.1f\nGenres (-s): %s\nBudget: %.1f $\n\n", film.getTitle(), date, film.getTimeDuration(), film.getGenre(), film.getBudget()));
+                answer.append(String.format("\n\n[RESULT]\nName: %s\nSession Date: %s\nDuration: %.1f\nGenres (-s): %s\nBudget: %.1f $\n", film.getTitle(), date, film.getTimeDuration(), film.getGenre(), film.getBudget()));
             }
         }
         return answer.toString();
